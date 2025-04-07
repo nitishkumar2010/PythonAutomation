@@ -1,0 +1,5 @@
+Executing search function...
+Chosen product: Tampa
+Tampa
+Tampa
+✅ Verified that the redirection happens correctly

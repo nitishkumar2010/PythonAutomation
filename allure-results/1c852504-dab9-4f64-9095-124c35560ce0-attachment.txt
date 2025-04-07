@@ -1,0 +1,5 @@
+Executing search function...
+Chosen product: 3429 Riverlawn Drive
+3429 Riverlawn Drive
+3429 Riverlawn Drive
+✅ Verified that the redirection happens correctly

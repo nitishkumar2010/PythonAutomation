@@ -1,0 +1,7 @@
+Executing search function...1
+3301 Riverlawn Drive
+3429 Riverlawn Drive
+Chosen product: 3301 Riverlawn Drive
+3301 RIVERLAWN DRIVE
+3301 RIVERLAWN DRIVE
+✅ Verified that the redirection happens correctly

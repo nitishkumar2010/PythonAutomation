@@ -1,0 +1,5 @@
+Executing search function...
+Chosen product: RiverTown - Ravines
+RiverTown - Ravines
+RiverTown - Ravines
+✅ Verified that the redirection happens correctly

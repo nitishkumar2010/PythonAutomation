@@ -1,0 +1,3 @@
+Executing search function...
+Chosen product: RiverTown - WaterSong
+✅ Verified that the redirection happens correctly

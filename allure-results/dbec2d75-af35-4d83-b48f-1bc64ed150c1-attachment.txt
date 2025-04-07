@@ -1,0 +1,5 @@
+Executing search function...
+Chosen product: RiverTown - Vista
+RiverTown - Vista
+RiverTown - Vista
+✅ Verified that the redirection happens correctly

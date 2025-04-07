@@ -1,0 +1,5 @@
+Executing search function...
+Chosen product: Birmingham II
+Birmingham II
+Birmingham II
+✅ Verified that the redirection happens correctly

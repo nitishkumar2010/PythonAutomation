@@ -1,0 +1,3 @@
+Executing search function...
+[<selenium.webdriver.remote.webelement.WebElement (session="79715b7bfc11ecd38b4ddcc9ea8ebb31", element="f.7639F3F8F757A3CF296BA7C8AB8A0225.d.C5F7463AC24E879327B936D2C5B49FD9.e.104")>]
+Redirection successful

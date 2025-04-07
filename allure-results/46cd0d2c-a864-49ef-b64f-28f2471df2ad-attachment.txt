@@ -1,0 +1,5 @@
+Executing search function...
+Chosen product: Birmingham
+Birmingham
+Birmingham
+✅ Verified that the redirection happens correctly
