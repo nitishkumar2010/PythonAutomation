@@ -68,8 +68,8 @@ def pytest_runtest_makereport(item, call):
             print(f"📸 Screenshot saved at: {full_path}")
 
             # ✅ Attach screenshot to HTML report with correct relative path
-            extra.append(pytest_html.extras.image(relative_path, "Screenshot"))
-            extra.append(pytest_html.extras.html(f'<a href="{relative_path}" target="_blank">🔍 View Screenshot</a>'))
+            extra.append(pytest_html.extras.image(str(full_path), "Screenshot"))
+            extra.append(pytest_html.extras.html(f'<a href="{str(full_path)}" target="_blank">🔍 View Screenshot</a>'))
 
         report.extra = extra
 
@@ -86,3 +86,19 @@ def pytest_html_results_summary(prefix, summary, postfix):
         "<p><strong>Project:</strong> Mattamy Homes</p>",
         "<p><strong>Tester:</strong> Nitish</p>"
     ])
+
+def pytest_addoption(parser):
+    """Add command-line option to specify the report directory."""
+    parser.addoption(
+        "--report-dir",
+        action="store",
+        default="reports",
+        help="Specify the directory to save HTML reports.",
+    )
+
+def pytest_configure(config):
+    """Configure report filename."""
+    # timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    timestamp = datetime.now().strftime("%Y-%m-%d")
+    report_filename = f"report_{timestamp}.html"
+    config.option.htmlpath = os.path.join(os.getcwd(), report_filename) #This line is changed.

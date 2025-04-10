@@ -31,6 +31,32 @@ class HomePage(BasePage):
         return self.click_on_suggestion(text, suggestions, search_type)
 
 
+    def click_on_location_from_FYH_header(self, location):
+        WebDriverWait(self.driver, 20).until(
+            EC.visibility_of_all_elements_located((By.XPATH, ".//button[@id='Find Your Dream Home']"))
+        )
+
+        fydh_button = self.driver.find_element(By.XPATH, ".//button[@id='Find Your Dream Home']")
+        fydh_button.click()
+
+        WebDriverWait(self.driver, 20).until(
+            EC.visibility_of_all_elements_located((By.XPATH, ".//button[@rel='prefetch']"))
+        )
+
+        all_locations = self.driver.find_elements(By.XPATH, ".//button[@rel='prefetch']")
+        location_found = False  # Add a flag to track if the location is found
+
+        for element in all_locations:
+
+            if location == element.text:
+                element.click()
+                location_found = True  # Set the flag to True.
+                break  # Exit loop once location is found
+
+        if not location_found:  # Check the flag after the loop.
+            print("Related location was not found")
+
+
     def get_locator_value(self, suggestion_type):
         """Returns a list of elements based on the suggestion type."""
         locators = {

@@ -8,33 +8,23 @@ from pageObjects.search_results_page import SearchResultsPage
 
 @pytest.mark.usefixtures("driver")
 class TestSorting:
-    def test_community_redirection(self, driver):
-        home_page = HomePage(driver)
-        community_page = CommunityPage(driver)
 
-        chosenProductName = home_page.search("River", "community")
-        community_page.verifyCorrectRedirection(chosenProductName)
+    def test_community_default_sort(self, driver):
 
-
-    def test_qmi_redirection(self, driver):
-        home_page = HomePage(driver)
-        qmi_page = QMIPage(driver)
-
-        chosenProductName = home_page.search("River", "qmi")
-        qmi_page.verifyCorrectRedirection(chosenProductName)
-
-
-    def test_plan_redirection(self, driver):
-        home_page = HomePage(driver)
-        plan_page = PlanPage(driver)
-
-        chosenProductName = home_page.search("plan", "plan")
-        plan_page.verifyCorrectRedirection(chosenProductName)
-
-
-    def test_metro_redirection(self, driver):
         home_page = HomePage(driver)
         search_results_page = SearchResultsPage(driver)
 
-        chosenProductName = home_page.search("River", "market")
-        search_results_page.verifyCorrectRedirection(chosenProductName)
+        home_page.search("phoenix", "market")
+        search_results_page.apply_sort_option("$ - $$$")
+        search_results_page.verify_sort_functionality_for_community_cards(True)
+
+    def test_community_default_sort_2(self, driver):
+
+        home_page = HomePage(driver)
+        search_results_page = SearchResultsPage(driver)
+
+        home_page.click_on_location_from_FYH_header("Texas")
+
+        search_results_page.apply_sort_option("$ - $$$")
+        search_results_page.verify_sort_functionality_for_community_cards(True)
+        search_results_page.verify_master_planned_comm_sort(True)
