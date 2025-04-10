@@ -60,7 +60,7 @@ class SearchResultsPage(BasePage):
         """Verifies sort functionality for community cards."""
         print("Verifying community card sorting...")
         xpath = ".//*[@id='ProductInfo']//div[text()='Starting From']/../span[not(ancestor::div[contains(@class, 'aos-animate')] and ancestor::div[contains(@class, 'bg-light-blue')])]"
-        WebDriverWait(self.driver, 120).until(EC.presence_of_all_elements_located((By.XPATH, xpath)))
+        WebDriverWait(self.driver, 20).until(EC.presence_of_all_elements_located((By.XPATH, xpath)))
         product_prices = self._get_price_elements(xpath)
 
         if product_prices:
@@ -76,7 +76,7 @@ class SearchResultsPage(BasePage):
 
         try:
             mpc_xpath = "(.//div[contains(@class,'aos-animate')]//div[contains(@class,'bg-light-blue')])"
-            WebDriverWait(self.driver, 120).until(EC.presence_of_all_elements_located((By.XPATH, mpc_xpath)))
+            WebDriverWait(self.driver, 20).until(EC.presence_of_all_elements_located((By.XPATH, mpc_xpath)))
             mpc_cards = self.driver.find_elements(By.XPATH, mpc_xpath)
 
             if mpc_cards:

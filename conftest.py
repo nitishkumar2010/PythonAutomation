@@ -1,13 +1,13 @@
 from datetime import datetime
 
-import pytest
 import os
 from pathlib import Path
 import re
+
+import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
-from pytest_html import extras
 import sys
 
 sys.stdout.reconfigure(encoding="utf-8")
@@ -20,12 +20,14 @@ def slugify(value):
 
 
 @pytest.fixture(scope="function")
-def driver():
+def driver(pytestconfig):
     """Setup WebDriver before each test and quit after."""
     service = Service(ChromeDriverManager().install())
     driver = webdriver.Chrome(service=service)
     driver.maximize_window()
-    driver.get("https://mattamyhomes.com/?country=USA")
+    url = pytestconfig.getini("url")
+    print(f"URL from pytest.ini: {url}")  # added print statement.
+    driver.get(url)
 
     yield driver  # Return driver instance to test
 
@@ -95,6 +97,8 @@ def pytest_addoption(parser):
         default="reports",
         help="Specify the directory to save HTML reports.",
     )
+    parser.addini("url", "base URL for the site under test")
+    parser.addoption("--url", action="store", help="Base URL for the site under test")
 
 def pytest_configure(config):
     """Configure report filename."""

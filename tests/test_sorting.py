@@ -23,7 +23,7 @@ class TestSorting:
         home_page = HomePage(driver)
         search_results_page = SearchResultsPage(driver)
 
-        home_page.click_on_location_from_FYH_header("Texas")
+        home_page.click_on_location_from_FYH_header("Florida")
 
         search_results_page.apply_sort_option("$ - $$$")
         search_results_page.verify_sort_functionality_for_community_cards(True)
