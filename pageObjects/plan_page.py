@@ -2,8 +2,6 @@ import time
 import re
 
 from pageObjects.base_page import BasePage
-from utils.locators import SearchResultsPageLocators
-from utils.helpers import click_first_or_second_element, is_clickable
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By

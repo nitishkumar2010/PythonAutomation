@@ -9,7 +9,7 @@ from pageObjects.search_results_page import SearchResultsPage
 @pytest.mark.usefixtures("driver")
 class TestSorting:
 
-    def test_community_default_sort(self, driver):
+    def test_community_default_sort_for_market(self, driver):
 
         home_page = HomePage(driver)
         search_results_page = SearchResultsPage(driver)
@@ -18,7 +18,7 @@ class TestSorting:
         search_results_page.apply_sort_option("$ - $$$")
         search_results_page.verify_sort_functionality_for_community_cards(True)
 
-    def test_community_default_sort_2(self, driver):
+    def test_community_default_sort_for_state(self, driver):
 
         home_page = HomePage(driver)
         search_results_page = SearchResultsPage(driver)
@@ -28,3 +28,12 @@ class TestSorting:
         search_results_page.apply_sort_option("$ - $$$")
         search_results_page.verify_sort_functionality_for_community_cards(True)
         search_results_page.verify_master_planned_comm_sort(True)
+
+    def test_community_default_sort_for_plans(self, driver):
+
+        home_page = HomePage(driver)
+        search_results_page = SearchResultsPage(driver)
+
+        home_page.click_on_location_from_FYH_header("Florida")
+        search_results_page.apply_sort_option("$ - $$$")
+        search_results_page.verify_sort_functionality_for_plan_cards(True)

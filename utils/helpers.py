@@ -1,3 +1,4 @@
+from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -23,3 +24,21 @@ def click_first_or_second_element(driver, xpath):
         print("First element was not clickable, clicked on the second element")
     else:
         print("No clickable elements found")
+
+
+def verify_redirection(driver, chosenProductName, xpath, ignore_case=False):
+    WebDriverWait(driver, 20).until(
+        EC.presence_of_all_elements_located((By.XPATH, xpath))
+    )
+    product_element = driver.find_element(By.XPATH, xpath)
+    actual_name = product_element.text
+
+    print(actual_name)
+    print(chosenProductName)
+
+    if ignore_case:
+        assert actual_name.upper() == chosenProductName.upper(), "❌ Failed to verify that the redirection happens correctly!"
+    else:
+        assert actual_name == chosenProductName, "❌ Failed to verify that the redirection happens correctly!"
+
+    print("✅ Verified that the redirection happens correctly")
